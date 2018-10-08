@@ -8,6 +8,7 @@ public interface DAO<T,S> {
   //  void delete(T t);
     void delete(S s);
     T find(S s);
+
     List<T> findAll();
 
 }

@@ -42,6 +42,7 @@
         <mapping class="com.edutilos.model.Personschule" />
         <mapping class="com.edutilos.model.PersonStudent" />
         <mapping class="com.edutilos.model.PersonTransient" />
+        <mapping class="com.edutilos.javaFX.model.Person" />
         <!--<mapping package="com.edutilos.model" />-->
 
         <!-- List of XML mapping files -->
