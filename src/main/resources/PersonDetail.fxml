@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.edutilos.javaFX.controller.PersonDetailController">
+   <children>
+      <Label layoutX="65.0" layoutY="135.0" prefHeight="15.0" prefWidth="135.0" text="ID:" />
+      <Label layoutX="148.0" layoutY="57.0" text="Person Details">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Label>
+      <Label layoutX="61.0" layoutY="184.0" text="Name:" />
+      <Label layoutX="61.0" layoutY="249.0" text="Age:" />
+      <Label layoutX="64.0" layoutY="304.0" prefHeight="15.0" prefWidth="56.0" text="Wage" />
+      <TextField fx:id="tfID" layoutX="157.0" layoutY="138.0" />
+      <TextField fx:id="tfName" layoutX="157.0" layoutY="179.0" />
+      <TextField fx:id="tfAge" layoutX="157.0" layoutY="244.0" />
+      <TextField fx:id="tfWage" layoutX="157.0" layoutY="307.0" />
+      <Button fx:id="btnPrint" layoutX="126.0" layoutY="411.0" mnemonicParsing="false" text="Print" />
+      <Button fx:id="btnClear" layoutX="210.0" layoutY="411.0" mnemonicParsing="false" text="Clear" />
+      
+   </children>
+</AnchorPane>
