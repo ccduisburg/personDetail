@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Table(name = "personadrestest")
 public class Personadress implements Serializable {
     @Id
+    @GeneratedValue
     @Column(name="ID")
     private Integer id;
     private String strasse;

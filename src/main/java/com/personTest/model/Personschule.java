@@ -12,12 +12,13 @@ import java.util.Set;
 @Table(name = "personschule")
 public class Personschule implements Serializable {
     @Id
+    @GeneratedValue
     @Column(name="ID")
     private Integer id;
     private String name;
     private String leite;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     private Set<PersonStudent> student;
 //    @OneToOne
 //    private PersonStudent student;

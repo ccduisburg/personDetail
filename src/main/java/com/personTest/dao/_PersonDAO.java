@@ -2,6 +2,7 @@ package com.personTest.dao;
 
 
 import com.edutilos.javaFX.model.Person;
+import com.personTest.model.PersonStudent;
 import com.personTest.model.PersonTest;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,9 +12,10 @@ import org.hibernate.cfg.Configuration;
 import javax.persistence.NoResultException;
 import java.util.List;
 
-public class _PersonDAO implements PDAO<PersonTest, Integer> {
+public class _PersonDAO implements PDAO<PersonStudent, Integer> {
 
     public _PersonDAO(){intSessionFactory();}
+
     private SessionFactory factory;
     private void intSessionFactory() {
         factory=new Configuration().configure().buildSessionFactory();
@@ -25,32 +27,34 @@ public class _PersonDAO implements PDAO<PersonTest, Integer> {
             factory.close();
     }
 
+
     @Override
-    public void create(PersonTest personTest) {
+    public void create(PersonStudent personStudent) {
         Session session=factory.openSession();
         try{
             session.getTransaction().begin();
-            session.save(personTest);
-
+            session.persist(personStudent);
+            session.getTransaction().commit();
         }catch(Exception ex){
             ex.printStackTrace();
             session.getTransaction().rollback();
         }finally{
             session.close();
         }
-
-
     }
 
     @Override
-    public void update(Integer id, PersonTest ps) {
+    public void update(Integer id, PersonStudent ps) {
         Session session = factory.openSession();
         try {
             session.getTransaction().begin();
-            PersonTest p=find(id);
+            PersonStudent p=find(id);
             p.setName(ps.getName());
             p.setAdress(ps.getAdress());
             p.setVorname(ps.getVorname());
+            p.setAdress(ps.getAdress());
+            p.setSchule(ps.getSchule());
+            p.setScholl(ps.getScholl());
             session.merge(p);
             session.getTransaction().commit();
         } catch(Exception ex) {
@@ -63,15 +67,30 @@ public class _PersonDAO implements PDAO<PersonTest, Integer> {
     }
 
     @Override
-    public void delete(Integer integer) {
+    public void delete(Integer id) {
+
+        Session session = factory.openSession();
+        try {
+            session.getTransaction().begin();
+            PersonStudent person = session.createQuery("from PersonStudent where id = :id",PersonStudent.class)
+                    .setParameter("id", id)
+                    .getSingleResult();
+            session.delete(person);
+            session.getTransaction().commit();
+        } catch(Exception ex) {
+            ex.printStackTrace();
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
 
     }
 
     @Override
-    public PersonTest find(Integer id) {
+    public PersonStudent find(Integer id) {
         Session session = factory.openSession();
         try {
-            return  session.createQuery("from PersonTest where id = :id", PersonTest.class)
+            return  session.createQuery("from PersonStudent where id = :id", PersonStudent.class)
                     .setParameter("id", id)
                     .getSingleResult();
         }catch (NoResultException e){
@@ -80,10 +99,10 @@ public class _PersonDAO implements PDAO<PersonTest, Integer> {
     }
 
 
-    public PersonTest findByName(String name) {
+    public PersonStudent findByName(String name) {
         Session session = factory.openSession();
 
-        PersonTest person = session.createQuery("from PersonTest where name = :name",PersonTest.class)
+        PersonStudent person = session.createQuery("from PersonStudent where name = :name",PersonStudent.class)
                 .setParameter("name", name)
                 .getSingleResult();
 
@@ -92,9 +111,9 @@ public class _PersonDAO implements PDAO<PersonTest, Integer> {
     }
 
     @Override
-    public List<PersonTest> findAll() {
+    public List<PersonStudent> findAll() {
         Session session = factory.openSession();
-        List<PersonTest> allUnis = session.createQuery("from PersonTest", PersonTest.class)
+        List<PersonStudent> allUnis = session.createQuery("from PersonStudent", PersonStudent.class)
                 .getResultList();
         session.close();
         return allUnis;

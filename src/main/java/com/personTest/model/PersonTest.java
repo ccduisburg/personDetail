@@ -20,12 +20,13 @@ public class PersonTest implements Serializable {
 
     @Id
     @Column(name="ID")
+    @GeneratedValue
     private Integer id;
     private String name;
     private String vorname;
 
 
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private Personadress adress;
 
 

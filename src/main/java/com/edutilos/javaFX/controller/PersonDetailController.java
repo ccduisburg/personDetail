@@ -29,7 +29,7 @@ public class PersonDetailController {
             public void handle(ActionEvent event) {
                 try{
                    Long ID= Long.parseLong(tfID.getText());
-                   prs.setId(ID);
+                    prs.setId(ID);
                     String name= tfName.getText();
                     prs.setName(name);
                     Integer age=Integer.parseInt(tfAge.getText());
