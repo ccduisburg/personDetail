@@ -58,8 +58,7 @@ public class PersonDetailController {
         btnSave.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-//                Long ID= Long.parseLong(tfID.getText());
-//                prs.setId(ID);
+
                 String name= tfName.getText();
                 prs.setName(name);
                 Integer age=Integer.parseInt(tfAge.getText());

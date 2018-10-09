@@ -1,4 +1,4 @@
-package com.edutilos.model;
+package com.personTest.model;
 
 
 import lombok.Getter;
@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @MappedSuperclass
-//@Inheritance(strategy=InheritanceType.JOINED)
+
 public class PersonTest implements Serializable {
 
 
@@ -27,8 +27,6 @@ public class PersonTest implements Serializable {
 
     @OneToOne(cascade=CascadeType.ALL)
     private Personadress adress;
-
-
 
 
     public PersonTest() {

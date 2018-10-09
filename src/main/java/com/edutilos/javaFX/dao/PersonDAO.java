@@ -96,18 +96,8 @@ public class PersonDAO implements DAO<Person,Long> {
         }
     }
 
-    /*
-     try {
-            return entityManager.createQuery("FROM IgRechnung WHERE id = :id", IgRechnung.class)
-                    .setParameter("id", id)
-                    .getSingleResult();
-        }catch (NoResultException e){
-            return null;
-        }
-     */
 
 
-    //@Override
     public Person findByName(String name) {
         Session session = factory.openSession();
 
@@ -119,19 +109,6 @@ public class PersonDAO implements DAO<Person,Long> {
         return person;
     }
 
-//
-//    public Long findByN(String name) {
-//        Session session = factory.openSession();
-//
-//        Person person = session.createQuery("from Person where name = :name",Person.class)
-//                .setParameter("name", name)
-//                .getSingleResult();
-//        session.delete(person);
-//        session.getTransaction().commit();
-//        session.close();
-//        return person.getId();
-//    }
-//
     @Override
     public List<Person> findAll() {
         Session session = factory.openSession();

@@ -1,9 +1,8 @@
 package com.edutilos.runner;
 
-import com.edutilos.model.PersonStudent;
-import com.edutilos.model.Personadress;
-import com.edutilos.model.Personschule;
-import com.edutilos.model.Student;
+import com.personTest.model.PersonStudent;
+import com.personTest.model.Personadress;
+import com.personTest.model.Personschule;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

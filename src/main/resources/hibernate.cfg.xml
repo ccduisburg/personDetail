@@ -38,9 +38,9 @@
         <mapping class="com.edutilos.model.University" />
         <mapping class="com.edutilos.model.Student" />
         <mapping class="com.edutilos.model.Teacher" />
-        <mapping class="com.edutilos.model.Personadress" />
-        <mapping class="com.edutilos.model.Personschule" />
-        <mapping class="com.edutilos.model.PersonStudent" />
+        <mapping class="com.personTest.model.Personadress" />
+        <mapping class="com.personTest.model.Personschule" />
+        <mapping class="com.personTest.model.PersonStudent" />
         <mapping class="com.edutilos.model.PersonTransient" />
         <mapping class="com.edutilos.javaFX.model.Person" />
         <!--<mapping package="com.edutilos.model" />-->

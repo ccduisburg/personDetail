@@ -1,7 +1,6 @@
-package com.edutilos.model;
+package com.personTest.model;
 
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
