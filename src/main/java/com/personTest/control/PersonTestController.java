@@ -38,6 +38,12 @@ public class PersonTestController {
 
     private List<PersonStudent> allStudent = new ArrayList<>();
 
+    public void loadPersonStudents(List<PersonStudent> students) {
+        tblvSchule.getItems().clear();
+        tblvSchule.getItems().addAll(students);
+    }
+
+
     private void clearField() {
         txtName.setText("");
         txtVorname.setText("");
@@ -54,7 +60,10 @@ public class PersonTestController {
     private void refreshStudentList() {
         allStudent.clear();
         allStudent.addAll(persTDAO.findAll());
+        tblvSchule.getItems().clear();
+        tblvSchule.getItems().addAll(allStudent);
     }
+
 
     @FXML
     private void initialize() {
@@ -83,9 +92,7 @@ public class PersonTestController {
                     personadress.setPLZ(PLZ);
                     String hnummer = txtHnummer.getText();
                     personadress.setHnummer(Integer.parseInt(hnummer));
-
                     personStudent.setAdress(personadress);
-
                     String schule = txtSchule.getText();
                     personschule.setName(schule);
                     String leiter = txtLeite.getText();

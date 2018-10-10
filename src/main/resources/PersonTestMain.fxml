@@ -8,6 +8,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="963.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.personTest.control.PersonTestController">
    <children>
       <SplitPane dividerPositions="0.49150743099787686" layoutX="5.0" layoutY="148.0" prefHeight="322.0" prefWidth="944.0">
@@ -97,12 +98,19 @@
                         <TextField fx:id="txtLeite" prefHeight="25.0" prefWidth="85.0" />
                      </children>
                   </VBox>
-                  <TableView fx:id="tblvSchule" layoutX="12.0" layoutY="109.0" prefHeight="180.0" prefWidth="444.0">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
-                    </columns>
-                  </TableView>
+                   <TableView fx:id="tblvSchule" layoutX="12.0" layoutY="109.0" prefHeight="180.0" prefWidth="444.0">
+                       <columns>
+                           <TableColumn prefWidth="83.0" text="NAME">
+                               <cellValueFactory><PropertyValueFactory property="name" /></cellValueFactory>
+                           </TableColumn>
+                           <TableColumn prefWidth="200.0" text="VORNAME">
+                               <cellValueFactory><PropertyValueFactory property="vorname" /></cellValueFactory>
+                           </TableColumn>
+                           <TableColumn prefWidth="129.0" text="KLASSE">
+                               <cellValueFactory><PropertyValueFactory property="klasse" /></cellValueFactory>
+                           </TableColumn>
+                       </columns>
+                   </TableView>
                </children>
             </AnchorPane>
         </items>

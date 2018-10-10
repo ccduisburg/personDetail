@@ -1,5 +1,7 @@
 package com.personTest.GUI;
 
+import com.personTest.control.PersonTestController;
+import com.personTest.dao._PersonDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,15 +15,28 @@ public class PersonTestRunner extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader load=new FXMLLoader(getClass().getResource("/PersonTestMain.fxml"));
+//        FXMLLoader load=new FXMLLoader(getClass().getResource("/PersonTestMain.fxml"));
+//        try{
+//            AnchorPane root=load.load();
+//            Scene scene=new Scene(root);
+//            primaryStage.setScene(scene);
+//            primaryStage.show();
+//        }catch(Exception ex ){
+//            ex.printStackTrace();
+//        }
+
+        _PersonDAO dao = new _PersonDAO();
+     //   FXMLLoader load=new FXMLLoader(getClass().getResource("/PersonTestMain.fxml"));
         try{
-            AnchorPane root=load.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/PersonTestMain.fxml"));
+            AnchorPane root = (AnchorPane)loader.load();
+            loader.<PersonTestController>getController().loadPersonStudents(dao.findAll());
+//            AnchorPane root=load.load();
             Scene scene=new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
         }catch(Exception ex ){
             ex.printStackTrace();
         }
-
     }
 }
