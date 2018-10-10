@@ -26,7 +26,7 @@ public class PersonTest implements Serializable {
     private String vorname;
 
 
-    @OneToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
+    @OneToOne(cascade={CascadeType.MERGE,CascadeType.REMOVE})
     private Personadress adress;
 
 
@@ -35,6 +35,13 @@ public class PersonTest implements Serializable {
     }
 
     public PersonTest(Integer id, String name, String vorname) {
+        this.id = id;
+        this.name = name;
+        this.vorname = vorname;
+
+    }
+
+    public PersonTest(String name, String vorname) {
         this.id = id;
         this.name = name;
         this.vorname = vorname;

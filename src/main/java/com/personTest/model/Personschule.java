@@ -18,6 +18,20 @@ public class Personschule implements Serializable {
     private String name;
     private String leite;
 
+    public Personschule(String name, String leite, Set<PersonStudent> student) {
+        this.name = name;
+        this.leite = leite;
+        this.student = student;
+    }
+
+    public Personschule(String name, String leite) {
+        this.name = name;
+        this.leite = leite;
+    }
+
+    public Personschule() {
+    }
+
     @OneToMany
     private Set<PersonStudent> student;
 //    @OneToOne

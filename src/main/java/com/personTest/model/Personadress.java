@@ -31,6 +31,12 @@ public class Personadress implements Serializable {
         this.PLZ = PLZ;
         this.hnummer = hnummer;
     }
+
+    public Personadress(String strasse, String PLZ, Integer hnummer) {
+        this.strasse = strasse;
+        this.PLZ = PLZ;
+        this.hnummer = hnummer;
+    }
 }
 
 

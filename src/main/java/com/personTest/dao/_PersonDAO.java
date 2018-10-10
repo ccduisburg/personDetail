@@ -4,6 +4,8 @@ package com.personTest.dao;
 import com.edutilos.javaFX.model.Person;
 import com.personTest.model.PersonStudent;
 import com.personTest.model.PersonTest;
+import com.personTest.model.Personadress;
+import com.personTest.model.Personschule;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -33,7 +35,7 @@ public class _PersonDAO implements PDAO<PersonStudent, Integer> {
         Session session=factory.openSession();
         try{
             session.getTransaction().begin();
-            session.persist(personStudent);
+            session.merge(personStudent);
             session.getTransaction().commit();
         }catch(Exception ex){
             ex.printStackTrace();
@@ -49,11 +51,15 @@ public class _PersonDAO implements PDAO<PersonStudent, Integer> {
         try {
             session.getTransaction().begin();
             PersonStudent p=find(id);
+            Personschule personschule = ps.getSchule();
+            personschule.setId(p.getSchule().getId());
+            Personadress personadress = ps.getAdress();
+            personadress.setId(p.getAdress().getId());
             p.setName(ps.getName());
             p.setAdress(ps.getAdress());
             p.setVorname(ps.getVorname());
-            p.setAdress(ps.getAdress());
-            p.setSchule(ps.getSchule());
+            p.setAdress(personadress);
+            p.setSchule(personschule);
             p.setScholl(ps.getScholl());
             session.merge(p);
             session.getTransaction().commit();

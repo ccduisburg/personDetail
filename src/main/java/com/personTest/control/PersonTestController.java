@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -35,6 +36,8 @@ public class PersonTestController {
 
     private _PersonDAO persTDAO;
 
+    private List<PersonStudent> allStudent = new ArrayList<>();
+
     private void clearField() {
         txtName.setText("");
         txtVorname.setText("");
@@ -48,6 +51,11 @@ public class PersonTestController {
 
     }
 
+    private void refreshStudentList() {
+        allStudent.clear();
+        allStudent.addAll(persTDAO.findAll());
+    }
+
     @FXML
     private void initialize() {
 
@@ -56,7 +64,7 @@ public class PersonTestController {
         Personadress personadress = new Personadress();
         PersonStudent personStudent = new PersonStudent();
         Personschule personschule = new Personschule();
-        List<PersonStudent> allStudent = persTDAO.findAll();
+        refreshStudentList();
         final int[] index = {0};
 
         btnSave.setOnAction(new EventHandler<ActionEvent>() {
@@ -88,6 +96,7 @@ public class PersonTestController {
                     persTDAO.create(personStudent);
                     allStudent.add(personStudent);
                     clearField();
+                    refreshStudentList();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -153,7 +162,7 @@ public class PersonTestController {
                 allStudent.clear();
                 allStudent.addAll(persTDAO.findAll());
                 clearField();
-
+                refreshStudentList();
             }
         });
 
@@ -185,7 +194,7 @@ public class PersonTestController {
                 Integer ID = Integer.parseInt(lblStudentID.getText());
 
                 try {
-
+                    PersonStudent personStudent = new PersonStudent();
                     String name = txtName.getText();
                     personStudent.setName(name);
                     String vorname = txtVorname.getText();
@@ -202,11 +211,11 @@ public class PersonTestController {
                     String leiter = txtLeite.getText();
                     personschule.setLeite(leiter);
                     personStudent.setScholl(schule);
+                    personStudent.setSchule(personschule);
                     persTDAO.update(ID, personStudent);
 //                    allStudent.set(ID,personStudent);
-                    allStudent.clear();
-                    allStudent.addAll(persTDAO.findAll());
                     clearField();
+                    refreshStudentList();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
